@@ -66,7 +66,7 @@ install.packages('celldex_1.0.0.tar.gz')
 ```
 #### Install Asgard
 ```
-devtools::install_github("lanagarmire/Asgard")
+devtools::install_github("odavalos/Asgard")
 ```
 #### Load Asgard
 ```
