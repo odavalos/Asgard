@@ -17,7 +17,7 @@ PrepRefv2 <- function(cell.info = NULL,
   cell_data <- read.table(file = cell.info, sep = "\t", header = TRUE, quote = "", stringsAsFactors = FALSE)
   
   # Identify tissues
-  tissues <- unique(as.character(cell_data$primary_site))
+  tissues <- unique(as.character(cell_data$cell_lineage))
   tissues <- tissues[which(tissues != "-666")]
   
   # Load gene information
@@ -27,12 +27,13 @@ PrepRefv2 <- function(cell.info = NULL,
   
   # Load signature information
   col_meta <- read.delim(sig.info, sep = "\t", stringsAsFactors = FALSE)
+  col_meta$cell_id <- col_meta$cell_iname
   
   for (tissue in tissues) {
     message("Processing tissue: ", tissue)
     
     # Subset cell lines for this tissue
-    cell_ids <- which(cell_data$primary_site == tissue)
+    cell_ids <- which(cell_data$cell_lineage == tissue)
     cell_names <- cell_data$cell_id[cell_ids]
     
     # Filter signatures for this tissue
