@@ -15,6 +15,7 @@ PrepRefv2 <- function(cell.info = NULL,
                              Output.Dir = "./") {
   # Load cell information
   cell_data <- read.table(file = cell.info, sep = "\t", header = TRUE, quote = "", stringsAsFactors = FALSE)
+  celldata$cell_id <- celldata$cell_iname
   
   # Identify tissues
   tissues <- unique(as.character(cell_data$cell_lineage))
